@@ -1,8 +1,13 @@
 {
-	"folders":
-	[
+	"folders": [
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"SublimeLinter.linters.markdownlint.args": [
+			"--config",
+			"./linters/markdownlint/base.yaml"
+		]
+	}
 }

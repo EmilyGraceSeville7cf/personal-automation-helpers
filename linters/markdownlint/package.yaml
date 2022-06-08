@@ -1,0 +1,9 @@
+---
+extends: base.yaml
+required-headings:
+  headings:
+    - ""
+    - "+"
+    - "Installation, update and uninstallation"
+    - "Usage examples"
+    - "*"
