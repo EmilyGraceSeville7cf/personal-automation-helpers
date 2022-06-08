@@ -7,7 +7,11 @@
 	"settings": {
 		"SublimeLinter.linters.markdownlint.args": [
 			"--config",
-			"./linters/markdownlint/base.yaml"
-		]
+			"${project_path}/linters/markdownlint/base.yaml"
+		],
+		"SublimeLinter.linters.yamllint.c":
+        [
+            "${project_path}/linters/yamllint/base.yaml"
+        ]
 	}
 }

@@ -1,4 +1,3 @@
----
 heading-increment: true
 heading-style:
   style: atx
@@ -65,21 +64,21 @@ no-empty-links: true
 proper-names:
   code_blocks: false
   names:
-    - Bash
-    - Zsh
-    - Python
-    - Emacs Lisp
-    - Jq
-    - Sed
-    - Awk
-    - Emacs
-    - Sublime Text
-    - Git
-    - GitHub
-    - C#
-    - PascalABC.NET
-    - Krita
-    - Google Slides
+  - Bash
+  - Zsh
+  - Python
+  - Emacs Lisp
+  - Jq
+  - Sed
+  - Awk
+  - Emacs
+  - Sublime Text
+  - Git
+  - GitHub
+  - C#
+  - PascalABC.NET
+  - Krita
+  - Google Slides
 no-alt-text: true
 code-block-style:
   style: fenced
