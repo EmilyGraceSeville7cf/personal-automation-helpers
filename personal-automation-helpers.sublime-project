@@ -9,9 +9,8 @@
 			"--config",
 			"${project_path}/linters/markdownlint/base.yaml"
 		],
-		"SublimeLinter.linters.yamllint.c":
-        [
-            "${project_path}/linters/yamllint/base.yaml"
-        ]
+		"SublimeLinter.linters.yamllint.c": [
+			"${project_path}/linters/yamllint/base.yaml"
+		]
 	}
 }
