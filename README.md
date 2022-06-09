@@ -1,2 +1,3 @@
-# personal-automation-helpers
+# Personal automation helpers
+
 My personal CI/CD helpers.
