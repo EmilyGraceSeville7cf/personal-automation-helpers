@@ -10,6 +10,7 @@ on:
 
 jobs:
   check:
+    if: inputs.config-name == 'base' || inputs.config-name == 'package'
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v3
