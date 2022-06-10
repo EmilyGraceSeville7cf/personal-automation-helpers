@@ -1,0 +1,29 @@
+name: Check Markdown files
+on:
+  workflow_call:
+    inputs:
+      config-name:
+        description: Config name to check without extension
+        type: string
+        required: false
+        default: base
+
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+    steps:
+    - run: |
+        npm install --global markdownlint-cli
+    - run: |
+        shopt -s globstar nullglob
+        declare name="$(mktemp)"
+        declare endpoint='https://api.github.com'
+        declare repository='EmilySeville7cfg/personal-automation-helpers'
+        declare file='linters/markdownlint/${{ inputs.config-name }}.yaml'
+        curl --header 'accept: application/vnd.github.v3+json' \
+          --user "EmilySeville7cfg:${{ secrets.REPO_ACCESS_TOKEN }}" \
+          "$endpoint/repos/$repository/contents/$file" |
+          jq -r '.content' |
+          base64 --decode > "$name" ||
+          exit "Can't obtain `markdownlint` config."
+        markdownlint --config "$name" **/*.{md,markdown}
