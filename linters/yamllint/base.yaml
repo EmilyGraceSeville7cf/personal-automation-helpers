@@ -59,4 +59,4 @@ rules:
   trailing-spaces: {}
   truthy:
     allowed-values: ["true", "false"]
-    check-keys: true
+    check-keys: false
