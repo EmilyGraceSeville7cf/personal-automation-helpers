@@ -26,4 +26,7 @@ jobs:
           jq --raw-output '.content' |
           base64 --decode > "$name" ||
           exit "Can't obtain `markdownlint` config."
+        echo "Config selected:"
+        cat "$name"
+        echo Executing markdownlint --config "$name" **/*.{yaml,yml}
         markdownlint --config "$name" **/*.{md,markdown}
