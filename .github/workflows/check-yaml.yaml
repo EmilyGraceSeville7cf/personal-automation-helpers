@@ -14,7 +14,9 @@ jobs:
         declare file='linters/yamllint/base.yaml'
         curl --header 'accept: application/vnd.github.v3+json' \
           --user "EmilySeville7cfg:${{ secrets.REPO_ACCESS_TOKEN }}" \
-          "$endpoint/repos/$repository/contents/$file" |
-          jq -r '.content' |
+          "$endpoint/repos/$repository/contents/$file" 2> /dev/null |
+          jq --raw-output '.content' |
           base64 --decode > "$name" || exit "Can't obtain `yamllint` config."
-        yamllint --config "$name" **/*.{yaml,yml}
+        echo "Config selected:"
+        cat "$name"
+        yamllint --config-file "$name" **/*.{yaml,yml}
