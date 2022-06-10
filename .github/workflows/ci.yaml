@@ -9,3 +9,5 @@ jobs:
     uses: ${{ env.GITHUB_REPOSITORY }}/.github/workflows/check-yaml.yaml
   check-markdown:
     uses: ${{ env.GITHUB_REPOSITORY }}/.github/workflows/check-markdown.yaml
+    with:
+      config-name: base
