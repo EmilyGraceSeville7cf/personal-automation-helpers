@@ -1,0 +1,11 @@
+name: CI
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  check-yaml:
+    uses: ${{ env.GITHUB_REPOSITORY }}/.github/workflows/check-yaml.yaml
+  check-markdown:
+    uses: ${{ env.GITHUB_REPOSITORY }}/.github/workflows/check-markdown.yaml
