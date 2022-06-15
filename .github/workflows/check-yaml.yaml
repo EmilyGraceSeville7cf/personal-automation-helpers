@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: |
-        shopt -s globstar nullglob
+        shopt -s globstar nullglob dotglob
         name="$(mktemp)"
         endpoint='https://api.github.com'
         repository='EmilySeville7cfg/personal-automation-helpers'

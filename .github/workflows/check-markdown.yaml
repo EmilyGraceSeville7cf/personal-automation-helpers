@@ -17,7 +17,7 @@ jobs:
     - run: |
         npm install --global markdownlint-cli
     - run: |
-        shopt -s globstar nullglob
+        shopt -s globstar nullglob dotglob
         name="$(mktemp)"
         endpoint='https://api.github.com'
         repository='EmilySeville7cfg/personal-automation-helpers'
