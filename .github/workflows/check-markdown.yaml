@@ -31,6 +31,6 @@ jobs:
         echo "Config selected:"
         cat "$name"
 
-        declare lint_command='markdownlint --config "$name" **/*.{md,markdown}'
+        declare lint_command="markdownlint --config \"$name\" **/*.{md,markdown}"
         echo Executing linting command: $lint_command
         $lint_command
