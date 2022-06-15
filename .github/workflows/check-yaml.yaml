@@ -9,10 +9,10 @@ jobs:
     - uses: actions/checkout@v3
     - run: |
         shopt -s globstar nullglob
-        declare name="$(mktemp)"
-        declare endpoint='https://api.github.com'
-        declare repository='EmilySeville7cfg/personal-automation-helpers'
-        declare file='linters/yamllint/base.yaml'
+        name="$(mktemp)"
+        endpoint='https://api.github.com'
+        repository='EmilySeville7cfg/personal-automation-helpers'
+        file='linters/yamllint/base.yaml'
         curl --header 'accept: application/vnd.github.v3+json' \
           --user "EmilySeville7cfg:${{ secrets.REPO_ACCESS_TOKEN }}" \
           "$endpoint/repos/$repository/contents/$file" 2> /dev/null |
@@ -21,6 +21,6 @@ jobs:
         echo "Config selected:"
         cat "$name"
 
-        declare lint_command="yamllint --config-file \"$name\" **/*.yaml **/*.yml"
+        lint_command="yamllint --config-file $name **/*.yaml **/*.yml"
         echo Executing linting command: $lint_command
         $lint_command
