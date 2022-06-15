@@ -30,5 +30,7 @@ jobs:
           exit "Can't obtain `markdownlint` config."
         echo "Config selected:"
         cat "$name"
-        echo Executing markdownlint --config "$name" **/*.{yaml,yml}
-        markdownlint --config "$name" **/*.{md,markdown}
+
+        declare lint_command='markdownlint --config "$name" **/*.{md,markdown}'
+        echo Executing linting command: $lint_command
+        $lint_command

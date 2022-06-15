@@ -20,5 +20,7 @@ jobs:
           base64 --decode > "$name" || exit "Can't obtain `yamllint` config."
         echo "Config selected:"
         cat "$name"
-        echo Executing yamllint --config-file "$name" **/*.{yaml,yml}
-        yamllint --config-file "$name" **/*.{yaml,yml}
+
+        declare lint_command='yamllint --config-file "$name" **/*.{yaml,yml}'
+        echo Executing linting command: $lint_command
+        $lint_command
