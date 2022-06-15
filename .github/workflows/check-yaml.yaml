@@ -1,0 +1,26 @@
+name: Check YAML files
+on:
+  workflow_call: null
+
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        shopt -s globstar nullglob
+        name="$(mktemp)"
+        endpoint='https://api.github.com'
+        repository='EmilySeville7cfg/personal-automation-helpers'
+        file='linters/yamllint/base.yaml'
+        curl --header 'accept: application/vnd.github.v3+json' \
+          --user "EmilySeville7cfg:${{ secrets.REPO_ACCESS_TOKEN }}" \
+          "$endpoint/repos/$repository/contents/$file" 2> /dev/null |
+          jq --raw-output '.content' |
+          base64 --decode > "$name" || exit "Can't obtain `yamllint` config."
+        echo "Config selected:"
+        cat "$name"
+
+        lint_command="yamllint --config-file $name **/*.yaml **/*.yml"
+        echo Executing linting command: $lint_command
+        $lint_command
