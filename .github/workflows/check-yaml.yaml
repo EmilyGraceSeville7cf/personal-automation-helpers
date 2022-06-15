@@ -21,6 +21,6 @@ jobs:
         echo "Config selected:"
         cat "$name"
 
-        declare lint_command="yamllint --config-file \"$name\" **/*.{yaml,yml}"
+        declare lint_command="yamllint --config-file \"$name\" **/*.yaml **/*.yml"
         echo Executing linting command: $lint_command
         $lint_command

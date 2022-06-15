@@ -18,10 +18,10 @@ jobs:
         npm install --global markdownlint-cli
     - run: |
         shopt -s globstar nullglob
-        declare name="$(mktemp)"
-        declare endpoint='https://api.github.com'
-        declare repository='EmilySeville7cfg/personal-automation-helpers'
-        declare file='linters/markdownlint/${{ inputs.config-name }}.yaml'
+        name="$(mktemp)"
+        endpoint='https://api.github.com'
+        repository='EmilySeville7cfg/personal-automation-helpers'
+        file='linters/markdownlint/${{ inputs.config-name }}.yaml'
         curl --header 'accept: application/vnd.github.v3+json' \
           --user "EmilySeville7cfg:${{ secrets.REPO_ACCESS_TOKEN }}" \
           "$endpoint/repos/$repository/contents/$file" 2> /dev/null |
@@ -31,6 +31,6 @@ jobs:
         echo "Config selected:"
         cat "$name"
 
-        declare lint_command="markdownlint --config \"$name\" **/*.{md,markdown}"
+        lint_command="markdownlint --config \"$name\" **/*.md **/*.markdown"
         echo Executing linting command: $lint_command
         $lint_command
